@@ -49,6 +49,7 @@ write(STDERR_FILENO, "Error: Command execution failed\n", 32);
 
 /**
  * main - Entry point of the simple shell program.
+ * size_t - Read a line from standard input
  * Return: Always 0.
  */
 int main(void)
@@ -57,8 +58,8 @@ while (1)
 {
 char command_line[MAX_COMMAND_LENGTH];
 display_prompt();
-
-ssize_t bytes_read = read(STDIN_FILENO, command_line, MAX_COMMAND_LENGTH);
+size_t bytes_read;
+bytes_read = read(STDIN_FILENO, command_line, MAX_COMMAND_LENGTH);
 
 if (bytes_read == 0)
 {
